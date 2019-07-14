@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>滴滴车主</title>
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    #weixin-tip {
+      /* display: none; */
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      filter: alpha(opacity=80);
+      height: 100%;
+      width: 100%;
+      z-index: 100;
+      /* background: rgba(0, 0, 0, 0.8); */
+    }
+
+    #weixin-tip p {
+      text-align: center;
+      margin-top: 10%;
+      padding: 0 5%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="weixin-tip"></div>
+
+  <script type="text/javascript">
+    goDownload();
+
+    // 去下载
+    function goDownload() {
+      var u = navigator.userAgent;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+      if (is_weixn()) {
+        var weixin_tip = document.getElementById("weixin-tip");
+        var img = document.createElement("img");
+        img.src = "https://pengxuetian.github.io/XXXXXXXXXX/weixin.jpg";
+        weixin_tip.appendChild(img);
+        return;
+      }
+      // 这里是安卓浏览器
+      if (isAndroid) {
+        window.location.href = 'https://imtt.dd.qq.com/16891/F855D1DBD563BA00388CBA56E8FFC6D8.apk?fsname=com.sdu.didi.gsui_5.1.58_364.apk&csr=1bbd';
+      } else if (isIOS) {
+        window.location.href = 'https://apps.apple.com/cn/app/%E6%BB%B4%E6%BB%B4%E8%BD%A6%E4%B8%BB-%E6%BB%B4%E6%BB%B4%E4%BC%98%E6%AD%A5%E5%8F%B8%E6%9C%BA%E6%8B%9B%E5%8B%9F/id911699257';
+      } else {
+        document.write('抱歉，滴滴车主暂时只有安卓版和ios版APP!');
+      }
+    }
+    // 微信扫码判断
+    function is_weixn() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+      } else {
+        return false;
+      }
+    };
+  </script>
+</body>
+
+</html>
