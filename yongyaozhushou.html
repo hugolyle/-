@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>用药助手</title>
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    #weixin-tip {
+      /* display: none; */
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      filter: alpha(opacity=80);
+      height: 100%;
+      width: 100%;
+      z-index: 100;
+      /* background: rgba(0, 0, 0, 0.8); */
+    }
+
+    #weixin-tip p {
+      text-align: center;
+      margin-top: 10%;
+      padding: 0 5%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="weixin-tip"></div>
+
+  <script type="text/javascript">
+    goDownload();
+
+    // 去下载
+    function goDownload() {
+      var u = navigator.userAgent;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+      if (is_weixn()) {
+        var weixin_tip = document.getElementById("weixin-tip");
+        var img = document.createElement("img");
+        img.src = "https://pengxuetian.github.io/XXXXXXXXXX/weixin.jpg";
+        weixin_tip.appendChild(img);
+        return;
+      }
+      // 这里是安卓浏览器
+      if (isAndroid) {
+        window.location.href = 'https://imtt.dd.qq.com/16891/26965806FF66DF0D06EA3F24FADAE702.apk?fsname=cn.dxy.medicinehelper_10.1_20190621.apk&csr=1bbd';
+      } else if (isIOS) {
+        window.location.href = 'https://apps.apple.com/cn/app/%E7%94%A8%E8%8D%AF%E5%8A%A9%E6%89%8B-%E4%B8%8D%E5%8F%AA%E6%98%AF%E6%9D%83%E5%A8%81%E8%8D%AF%E7%89%A9%E4%BF%A1%E6%81%AF%E5%8F%82%E8%80%83%E5%B7%A5%E5%85%B7/id540999305';
+      } else {
+        document.write('抱歉，用药助手暂时只有安卓版和ios版APP!');
+      }
+    }
+    // 微信扫码判断
+    function is_weixn() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+      } else {
+        return false;
+      }
+    };
+  </script>
+</body>
+
+</html>
